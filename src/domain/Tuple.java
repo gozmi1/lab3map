@@ -1,0 +1,39 @@
+package domain;
+
+import java.util.Objects;
+
+/**
+ * A generic class representing a pair of two elements.
+ * Extensively used for composite IDs.
+ *
+ * @param <E1> type of the first element
+ * @param <E2> type of the second element
+ */
+public class Tuple<E1, E2> {
+    private E1 e1;
+    private E2 e2;
+
+    public Tuple(E1 e1, E2 e2) {
+        this.e1 = e1;
+        this.e2 = e2;
+    }
+
+    public E1 getLeft() { return e1; }
+    public void setLeft(E1 e1) { this.e1 = e1; }
+
+    public E2 getRight() { return e2; }
+    public void setRight(E2 e2) { this.e2 = e2; }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Tuple<?, ?> tuple = (Tuple<?, ?>) obj;
+        return Objects.equals(e1, tuple.e1) && Objects.equals(e2, tuple.e2);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(e1, e2);
+    }
+}
